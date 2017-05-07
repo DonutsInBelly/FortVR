@@ -21,14 +21,14 @@ public class BowAndArrow : MonoBehaviour {
     // Update is called once per frame
     void Update() {
         distance = 5 * Vector3.Distance(LeftHand.transform.position, RightHand.transform.position);
-        Debug.Log(distance);
+        //Debug.Log(distance);
         if (SixenseInput.Controllers[1].Trigger != 0f)
         {
             if (!isFired)
             {
-                GameObject LaunchedArrow = Instantiate(Arrow, RightHand.transform.position, RightHand.transform.rotation);
+                GameObject LaunchedArrow = Instantiate(Arrow, RightHand.transform.position, LeftHand.transform.rotation);
                 //LaunchedArrow.GetComponent<>().//GetComponent<Rigidbody>().AddForce(RightHand.transform.forward * 100 * distance);
-                LaunchedArrow.GetComponent<Rigidbody>().AddForce(RightHand.transform.forward * 2000 * distance);
+                LaunchedArrow.GetComponent<Rigidbody>().AddForce(LeftHand.transform.forward * 2000 * distance);
                 //LaunchedArrow.GetComponent<Rigidbody>().velocity = RightHand.transform.forward;
                 isFired = true;
             }
