@@ -1,11 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UIController : MonoBehaviour
 {
 
     GameObject[] pauseObjects;
+	public Text bricks;
+	private static int brickCounter;
 
     // Use this for initialization
     void Start()
@@ -13,7 +16,15 @@ public class UIController : MonoBehaviour
         Time.timeScale = 1;
         pauseObjects = GameObject.FindGameObjectsWithTag("Pause");
         hidePaused();
+		brickCount();
     }
+	
+	public void brickCount()
+	{
+		brickCounter = PlaceBrick.MaxBrickCount;
+		Debug.Log("Current Brick Count: " + brickCounter);
+		bricks.text = "Bricks " + brickCounter + "/15";
+	}
 
     public void pauseControl()
     {
@@ -63,6 +74,9 @@ public class UIController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+		//brickCounter = PlaceBrick.MaxBrickCount;
+		brickCount();
+		
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             if (Time.timeScale == 1)

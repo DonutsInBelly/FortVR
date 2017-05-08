@@ -6,8 +6,12 @@ public class PlaceBrick : MonoBehaviour {
 
     public GameObject Brick;
     public GameObject RightHand;
-	public int MaxBrickCount = 0;
+	public static int MaxBrickCount = 0;
 	private GameObject instance;
+	
+	public static class GlobalVariables {
+		public static int MaxBrickCount = 0;
+	}
 
 	// Use this for initialization
 	void Start () {
@@ -21,12 +25,11 @@ public class PlaceBrick : MonoBehaviour {
         {
             instance = Instantiate(Brick, RightHand.transform.position, Quaternion.identity);
 			instance.name = "brickSpawn";
-			MaxBrickCount += 1;
+			MaxBrickCount++;
 			cloneCounter();
         }
 		if (Input.GetMouseButton(1) && instance){
 			instance.transform.position = RightHand.transform.position;
-			//instance.transform.position.z = 10;
 		}
 		if (Input.GetMouseButtonUp(1) && instance){
 			instance = null;
@@ -37,7 +40,7 @@ public class PlaceBrick : MonoBehaviour {
 	void cloneCounter() {
 		if(MaxBrickCount == 15){
 			Destroy(GameObject.Find("brickSpawn"));
-			MaxBrickCount -= 1;
+			MaxBrickCount--;
 		}
 	}
 }
