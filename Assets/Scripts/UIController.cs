@@ -8,7 +8,9 @@ public class UIController : MonoBehaviour
 
     GameObject[] pauseObjects;
 	public Text bricks;
+	public Text time;
 	private static int brickCounter;
+	private float timeLeft = 60.0f;
 
     // Use this for initialization
     void Start()
@@ -17,6 +19,7 @@ public class UIController : MonoBehaviour
         pauseObjects = GameObject.FindGameObjectsWithTag("Pause");
         hidePaused();
 		brickCount();
+		countDown();
     }
 	
 	public void brickCount()
@@ -24,6 +27,16 @@ public class UIController : MonoBehaviour
 		brickCounter = PlaceBrick.MaxBrickCount;
 		//Debug.Log("Current Brick Count: " + brickCounter);
 		bricks.text = "Bricks " + brickCounter + "/15";
+	}
+	
+	public void countDown()
+	{
+		timeLeft -= Time.deltaTime;
+		time.text = "Time Left: " + Mathf.Round(timeLeft);
+		Debug.Log("Time Left: " + timeLeft);
+		if(timeLeft < 0){
+			Application.LoadLevel("stage2");
+		}
 	}
 
     public void pauseControl()
@@ -75,6 +88,7 @@ public class UIController : MonoBehaviour
     void Update()
     {
 		brickCount();
+		countDown();
 		
         if (Input.GetKeyDown(KeyCode.Escape))
         {
