@@ -30,6 +30,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
         [SerializeField] private AudioClip m_JumpSound;           // the sound played when character leaves the ground.
         [SerializeField] private AudioClip m_LandSound;           // the sound played when character touches back on ground.
 
+        public bool DebugMode = false;
         private Camera m_Camera;
         private bool m_Jump;
         private float m_YRotation;
@@ -206,11 +207,18 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private void GetInput(out float speed)
         {
             GameObject si = GameObject.Find("SixenseInput");
+            float horizontal;
+            float vertical;
             // Read input
-            //float horizontal = CrossPlatformInputManager.GetAxis("Horizontal");
-            //float vertical = CrossPlatformInputManager.GetAxis("Vertical");
-            float horizontal = SixenseInput.Controllers[0].JoystickX;
-            float vertical = SixenseInput.Controllers[0].JoystickY;
+            if (DebugMode)
+            {
+                horizontal = CrossPlatformInputManager.GetAxis("Horizontal");
+                vertical = CrossPlatformInputManager.GetAxis("Vertical");
+            } else
+            {
+                horizontal = SixenseInput.Controllers[0].JoystickX;
+                vertical = SixenseInput.Controllers[0].JoystickY;
+            }
 
             bool waswalking = m_IsWalking;
 
