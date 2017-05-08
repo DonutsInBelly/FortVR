@@ -22,7 +22,7 @@ public class UIController : MonoBehaviour
 	public void brickCount()
 	{
 		brickCounter = PlaceBrick.MaxBrickCount;
-		Debug.Log("Current Brick Count: " + brickCounter);
+		//Debug.Log("Current Brick Count: " + brickCounter);
 		bricks.text = "Bricks " + brickCounter + "/15";
 	}
 
@@ -74,7 +74,6 @@ public class UIController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-		//brickCounter = PlaceBrick.MaxBrickCount;
 		brickCount();
 		
         if (Input.GetKeyDown(KeyCode.Escape))
