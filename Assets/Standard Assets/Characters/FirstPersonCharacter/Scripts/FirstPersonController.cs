@@ -1,4 +1,6 @@
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityStandardAssets.CrossPlatformInput;
 using UnityStandardAssets.Utility;
@@ -203,9 +205,12 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
         private void GetInput(out float speed)
         {
+            GameObject si = GameObject.Find("SixenseInput");
             // Read input
-            float horizontal = CrossPlatformInputManager.GetAxis("Horizontal");
-            float vertical = CrossPlatformInputManager.GetAxis("Vertical");
+            //float horizontal = CrossPlatformInputManager.GetAxis("Horizontal");
+            //float vertical = CrossPlatformInputManager.GetAxis("Vertical");
+            float horizontal = SixenseInput.Controllers[0].JoystickX;
+            float vertical = SixenseInput.Controllers[0].JoystickY;
 
             bool waswalking = m_IsWalking;
 
