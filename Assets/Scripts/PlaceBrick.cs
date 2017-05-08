@@ -26,7 +26,7 @@ public class PlaceBrick : MonoBehaviour {
         }
 		if (Input.GetMouseButton(1) && instance){
 			instance.transform.position = RightHand.transform.position;
-			instance.transform.position.z = 10;
+			//instance.transform.position.z = 10;
 		}
 		if (Input.GetMouseButtonUp(1) && instance){
 			instance = null;
