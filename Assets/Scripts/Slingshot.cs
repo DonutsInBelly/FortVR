@@ -19,7 +19,7 @@ public class Slingshot : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
-        distance = 5 * Vector3.Distance(LeftHand.transform.position, RightHand.transform.position);
+        distance = 10 * Vector3.Distance(LeftHand.transform.position, RightHand.transform.position);
 		if (SixenseInput.Controllers[1].Trigger != 0f)
         {
             if (!isFired)

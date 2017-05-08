@@ -28,7 +28,7 @@ public class BowAndArrow : MonoBehaviour {
             {
                 GameObject LaunchedArrow = Instantiate(Arrow, RightHand.transform.position, LeftHand.transform.rotation);
                 //LaunchedArrow.GetComponent<>().//GetComponent<Rigidbody>().AddForce(RightHand.transform.forward * 100 * distance);
-                LaunchedArrow.GetComponent<Rigidbody>().AddForce(LeftHand.transform.forward * 2000 * distance);
+                LaunchedArrow.GetComponent<Rigidbody>().AddForce(LeftHand.transform.forward * 1000 * distance);
                 //LaunchedArrow.GetComponent<Rigidbody>().velocity = RightHand.transform.forward;
                 isFired = true;
             }
