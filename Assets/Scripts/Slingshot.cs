@@ -26,6 +26,7 @@ public class Slingshot : MonoBehaviour {
             {
                 GameObject LaunchedBall = Instantiate(Ball, RightHand.transform.position, RightHand.transform.rotation);
                 LaunchedBall.GetComponent<Rigidbody>().AddForce(RightHand.transform.forward * 100 * distance);
+                Destroy(LaunchedBall, 2.0f);
                 isFired = true;
             }
         }

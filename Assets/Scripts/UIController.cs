@@ -11,10 +11,13 @@ public class UIController : MonoBehaviour
 	public Text time;
 	private static int brickCounter;
 	private float timeLeft = 60.0f;
+    public GameObject overwatch;
 
     // Use this for initialization
     void Start()
     {
+        overwatch = GameObject.Find("BGM");
+        DontDestroyOnLoad(overwatch);
         Time.timeScale = 1;
         pauseObjects = GameObject.FindGameObjectsWithTag("Pause");
         hidePaused();

@@ -25,6 +25,7 @@ public class ThrowBall : MonoBehaviour {
             {
                 GameObject LaunchedBall = Instantiate(Ball, RightHand.transform.position, RightHand.transform.rotation) as GameObject;
                 LaunchedBall.GetComponent<Rigidbody>().AddForce(RightHand.transform.forward * 100 * speed);
+                Destroy(LaunchedBall, 2.0f);
                 isFired = true;
             }
         }

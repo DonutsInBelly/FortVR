@@ -30,6 +30,7 @@ public class BowAndArrow : MonoBehaviour {
                 //LaunchedArrow.GetComponent<>().//GetComponent<Rigidbody>().AddForce(RightHand.transform.forward * 100 * distance);
                 LaunchedArrow.GetComponent<Rigidbody>().AddForce(LeftHand.transform.forward * 1000 * distance);
                 //LaunchedArrow.GetComponent<Rigidbody>().velocity = RightHand.transform.forward;
+                Destroy(LaunchedArrow, 2.0f);
                 isFired = true;
             }
         }

@@ -62,8 +62,39 @@ public class PlaceBrick : MonoBehaviour {
                     MaxBrickCount++;
                     cloneCounter();
                     isFired = true;
+                    
                 }
-                
+                if (instance)
+                {
+                    instance.transform.position = RightHand.transform.position;
+                    //Vector3 tmp = instance.transform.position;
+                    //tmp.z += 3;
+                    //instance.transform.position = tmp;
+                    instance.transform.position = RightHand.transform.position + RightHand.transform.forward * 3;
+                    if (instance.transform.position.y < 1.0f)
+                    {
+                        float distanceFromSurface = Mathf.Abs(instance.transform.position.y);
+                        Vector3 correctedPos = new Vector3(instance.transform.position.x, instance.transform.position.y + distanceFromSurface + 1, instance.transform.position.z);
+                        instance.transform.position = correctedPos;
+                    }
+                    //instance.transform.position.Set(instance.transform.position.x, instance.transform.position.y, instance.transform.position.z + 3);
+                }
+
+            }
+            if (SixenseInput.Controllers[1].Trigger != 0f && instance)
+            {
+                instance.transform.position = RightHand.transform.position;
+                //Vector3 tmp = instance.transform.position;
+                //tmp.z += 3;
+                //instance.transform.position = tmp;
+                instance.transform.position = RightHand.transform.position + RightHand.transform.forward * 3;
+                if (instance.transform.position.y < 1.0f)
+                {
+                    float distanceFromSurface = Mathf.Abs(instance.transform.position.y);
+                    Vector3 correctedPos = new Vector3(instance.transform.position.x, instance.transform.position.y + distanceFromSurface + 1, instance.transform.position.z);
+                    instance.transform.position = correctedPos;
+                }
+                //instance.transform.position.Set(instance.transform.position.x, instance.transform.position.y, instance.transform.position.z + 3);
             }
             if (SixenseInput.Controllers[1].Trigger != 0f && instance)
             {
