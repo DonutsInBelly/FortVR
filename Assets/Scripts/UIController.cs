@@ -18,8 +18,15 @@ public class UIController : MonoBehaviour
         Time.timeScale = 1;
         pauseObjects = GameObject.FindGameObjectsWithTag("Pause");
         hidePaused();
-		brickCount();
-		countDown();
+        if (Application.loadedLevelName.Equals("stage1"))
+        {
+            brickCount();
+            countDown();
+        } else
+        {
+            GameObject.Find("Bricks").SetActive(false);
+            GameObject.Find("Time").SetActive(false);
+        }
     }
 	
 	public void brickCount()
@@ -33,7 +40,7 @@ public class UIController : MonoBehaviour
 	{
 		timeLeft -= Time.deltaTime;
 		time.text = "Time Left: " + Mathf.Round(timeLeft);
-		Debug.Log("Time Left: " + timeLeft);
+		//Debug.Log("Time Left: " + timeLeft);
 		if(timeLeft < 0){
 			Application.LoadLevel("stage2");
 		}
@@ -87,8 +94,12 @@ public class UIController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-		brickCount();
-		countDown();
+        //Debug.Log(Application.loadedLevelName);
+        if (Application.loadedLevelName.Equals("stage1"))
+        {
+            brickCount();
+            countDown();
+        }
 		
         if (Input.GetKeyDown(KeyCode.Escape))
         {
