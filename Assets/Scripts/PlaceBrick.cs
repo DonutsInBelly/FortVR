@@ -22,6 +22,7 @@ public class PlaceBrick : MonoBehaviour {
         {
             instance = Instantiate(Brick, RightHand.transform.position, Quaternion.identity);
 			instance.name = "brickSpawn";
+            DontDestroyOnLoad(instance);
 			MaxBrickCount++;
 			cloneCounter();
         }

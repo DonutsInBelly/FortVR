@@ -21,6 +21,7 @@ public class PlacePyramid : MonoBehaviour {
         {
             instance = Instantiate(Pyramid, LeftHand.transform.position, Quaternion.identity);
 			instance.name = "pyramidSpawn";
+            DontDestroyOnLoad(instance);
 			MaxPyramidCount++;
 			cloneCounter();
         }

@@ -15,7 +15,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
         public bool smooth;
         public float smoothTime = 5f;
         public bool lockCursor = true;
-
+        public GameObject fps;
 
         private Quaternion m_CharacterTargetRot;
         private Quaternion m_CameraTargetRot;
@@ -25,15 +25,23 @@ namespace UnityStandardAssets.Characters.FirstPerson
         {
             m_CharacterTargetRot = character.localRotation;
             m_CameraTargetRot = camera.localRotation;
+            fps = GameObject.Find("FPSController");
         }
 
 
         public void LookRotation(Transform character, Transform camera)
         {
-            //float yRot = CrossPlatformInputManager.GetAxis("Mouse X") * XSensitivity;
-            //float xRot = CrossPlatformInputManager.GetAxis("Mouse Y") * YSensitivity;
-            float yRot = SixenseInput.Controllers[1].JoystickX * XSensitivity;
-            float xRot = SixenseInput.Controllers[1].JoystickY * YSensitivity;
+            float xRot;
+            float yRot;
+            if (fps.GetComponent<FirstPersonController>().DebugMode)
+            {
+                xRot = CrossPlatformInputManager.GetAxis("Mouse Y") * YSensitivity;
+                yRot = CrossPlatformInputManager.GetAxis("Mouse X") * XSensitivity;
+            } else
+            {
+                yRot = SixenseInput.Controllers[1].JoystickX * XSensitivity;
+                xRot = SixenseInput.Controllers[1].JoystickY * YSensitivity;
+            }
 
             m_CharacterTargetRot *= Quaternion.Euler (0f, yRot, 0f);
             m_CameraTargetRot *= Quaternion.Euler (-xRot, 0f, 0f);
