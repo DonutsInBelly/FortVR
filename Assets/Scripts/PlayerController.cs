@@ -12,15 +12,15 @@ public class PlayerController : MonoBehaviour {
 	void Start () {
         HC = GameObject.Find("HandsController");
         bow = GameObject.Find("Bow00_prefab");
-        bow.SetActive(false);
         slingshot = GameObject.Find("Slingshot_prefab");
-        slingshot.SetActive(false);
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		if (Application.loadedLevelName.Equals("stage1"))
         {
+            bow.SetActive(false);
+            slingshot.SetActive(false);
             HC.GetComponent<PlaceBrick>().enabled = true;
             HC.GetComponent<PlacePyramid>().enabled = true;
             HC.GetComponent<WeaponSwitcher>().enabled = false;
